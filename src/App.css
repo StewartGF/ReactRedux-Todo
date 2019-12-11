@@ -1,0 +1,76 @@
+html,
+body {
+  font-family: "Roboto", sans-serif !important;
+  background: #1a2980;
+  background: -webkit-linear-gradient(to right, #26d0ce, #1a2980);
+  background: linear-gradient(to right, #26d0ce, #1a2980);
+  overflow: hidden;
+}
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container-todos {
+  width: 80%;
+  height: 70%;
+  margin: 30px;
+  padding: 55px;
+  background: white;
+  border-radius: 25px;
+  position: relative;
+  white-space: hidden;
+  display: flex;
+  overflow: hidden;
+}
+.sideMenu {
+  height: 100%;
+  width: 20%;
+  border: solid 1px black;
+  flex-direction: column;
+  overflow-y: auto; /* para que no se sobreponga al div independiente de la cantidad de TO DO */
+  flex: 1;
+  box-sizing: border-box;
+  padding: 40px;
+  overflow: hidden;
+}
+.rightMenu {
+  box-sizing: border-box;
+  padding: 40px;
+  height: 100%;
+  width: 80%;
+  border: solid 1px black;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex: 2; /* para que tome el doble del espacio que el sidebar*/
+}
+@media (min-width: 700px) {
+  .sideMenu {
+    flex-direction: row;
+  }
+  .rightMenu {
+    flex-direction: row;
+    flex: 1;
+  }
+}
+
+/* FOOTER*/
+footer {
+  width: 100%;
+  font-size: 1.7vh;
+  color: white;
+  position: fixed;
+  bottom: 0px;
+  text-align: center; /* This line is not needed but centers your text */
+  font-weight: 600;
+}
+@media only screen and (max-width: 650px) {
+  .footer {
+    display: none;
+  }
+}

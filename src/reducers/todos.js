@@ -24,12 +24,6 @@ const todos = (state = [], action) => {
           : todo
       );
 
-    // [
-    //   ...state,
-    //   {
-    //     mensajes: [...state.mensajes, action.texto]
-    //   }
-    // ];
     default:
       return state;
   }

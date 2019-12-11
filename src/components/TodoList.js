@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Todo from "./Todo";
-import { addComentario } from "../actions";
+import { addComentario, todoSeleccionado } from "../actions";
 import { connect } from "react-redux";
 import uuid from "react-uuid";
 
@@ -32,19 +32,31 @@ function TodoList({ todos, toggleTodo, dispatch }) {
   };
 
   const handleSend = () => {
-    console.log(Comentario);
+    // console.log(Comentario);
     dispatch(addComentario(Comentario));
+  };
+
+  const verComentarios = evento => {
+    // dispatch => el evento.target.id en el state del comentario
+    dispatch(todoSeleccionado(evento.target.id));
   };
   return (
     <ul>
       {todos.map(todo => (
-        <div key={todo.id}>
-          <Todo {...todo} onClick={() => toggleTodo(todo.id)} />
-          <input id={todo.id} type="text" onChange={handleChange} />
-          <button onClick={() => handleComentario(todo.id)}>
-            Agregar comentario
-          </button>
-        </div>
+        <>
+          <div className="izqContent" key={todo.id}>
+            <Todo {...todo} onClick={() => toggleTodo(todo.id)} />
+            <input id={todo.id} type="text" onChange={handleChange} />
+            <button onClick={() => handleComentario(todo.id)}>
+              Agregar comentario
+            </button>
+          </div>
+          <div className="derContent">
+            <button id={todo.id} onClick={verComentarios}>
+              Ver comentarios
+            </button>
+          </div>
+        </>
       ))}
     </ul>
   );

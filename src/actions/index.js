@@ -27,3 +27,10 @@ export const addComentario = comentario => ({
   id: comentario.id,
   payload: comentario
 });
+
+//Action para guardar en el state el Todo Seleccionado para ver los comentarios
+
+export const todoSeleccionado = id => ({
+  type: "TODO_SELECCIONADO",
+  payload: id
+});

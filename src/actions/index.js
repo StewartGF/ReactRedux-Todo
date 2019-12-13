@@ -34,3 +34,8 @@ export const todoSeleccionado = id => ({
   type: "TODO_SELECCIONADO",
   payload: id
 });
+
+export const borrarToDo = id => ({
+  type: "BORRAR_TODO",
+  payload: id
+});

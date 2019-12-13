@@ -2,7 +2,7 @@ import React from "react";
 import { connect, useSelector } from "react-redux";
 
 function Comentarios(todos) {
-  const todo = useSelector(state => state.todos);
+  const todo = useSelector(state => state.todos); // recibo la información del state
   const todoSeleccionado = useSelector(state => state.seleccionado);
   let comentarios;
   let con;
@@ -10,19 +10,20 @@ function Comentarios(todos) {
     comentarios = todo
       .filter(todo => todo.id === parseInt(todoSeleccionado.id))
       .map(x => x.mensajes);
-    con = []
-      .concat(...comentarios)
-      .map(x => ({ id: x.comentarioID, comentario: x.comentario }));
-    console.log(con);
+    con = [].concat(...comentarios).map(x => ({
+      id: x.id,
+      comentario: x.comentario,
+      idComentario: x.comentarioID
+    }));
   }
-  // traer todos los todo y después mapear para encontrar el del ID
+
   return (
     <div className="container-comentarios">
       <h1>Comentarios</h1>
       {con.map(comentario => (
-        <div key={comentario.id} className="comentario-item">
+        <div key={comentario.idComentario} className="comentario-item">
           <div className="descripcion">
-            <p className="id"> {comentario.id}</p>
+            <p className="id"> {comentario.idComentario}</p>
             <p className="texto">{comentario.comentario} </p>
           </div>
         </div>

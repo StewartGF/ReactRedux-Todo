@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Todo from "./Todo";
-import { addComentario, todoSeleccionado } from "../actions";
+import { addComentario, todoSeleccionado, borrarToDo } from "../actions";
 import { connect } from "react-redux";
 import uuid from "react-uuid";
 
@@ -28,37 +28,44 @@ function TodoList({ todos, toggleTodo, dispatch }) {
       id: e.target.id,
       comentario: e.target.value
     });
-    // console.log(Comentario);
   };
 
   const handleSend = () => {
-    // console.log(Comentario);
     dispatch(addComentario(Comentario));
   };
 
   const verComentarios = evento => {
-    // dispatch => el evento.target.id en el state del comentario
     dispatch(todoSeleccionado(evento.target.id));
   };
+  const handleBlur = evento => {
+    evento.target.value = "";
+  };
   return (
-    <ul>
+    <>
       {todos.map(todo => (
-        <>
-          <div className="izqContent" key={todo.id}>
+        <div key={todo.id} className="izqContent">
+          <ul>
             <Todo {...todo} onClick={() => toggleTodo(todo.id)} />
-            <input id={todo.id} type="text" onChange={handleChange} />
-            <button onClick={() => handleComentario(todo.id)}>
-              Agregar comentario
-            </button>
-          </div>
-          <div className="derContent">
-            <button id={todo.id} onClick={verComentarios}>
-              Ver comentarios
-            </button>
-          </div>
-        </>
+          </ul>
+          <input
+            id={todo.id}
+            type="text"
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          <button onClick={() => handleComentario(todo.id)}>
+            Agregar comentario
+          </button>
+          <button id={todo.id} onClick={verComentarios}>
+            Ver comentarios
+          </button>
+          <button id={todo.id} onClick={() => dispatch(borrarToDo(todo.id))}>
+            Borrar
+          </button>
+        </div>
       ))}
-    </ul>
+    </>
+    // <div className="derContent"></div>
   );
 }
 TodoList.propTypes = {

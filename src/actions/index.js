@@ -39,3 +39,8 @@ export const borrarToDo = id => ({
   type: "BORRAR_TODO",
   payload: id
 });
+
+export const editarComentario = comentario => ({
+  type: "EDITAR_COMENTARIO",
+  payload: comentario //trae id y  el comentario
+});

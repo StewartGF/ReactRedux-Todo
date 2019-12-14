@@ -25,6 +25,43 @@ const todos = (state = [], action) => {
       );
     case "BORRAR_TODO":
       return state.filter(todo => todo.id !== action.payload);
+    case "EDITAR_COMENTARIO":
+      return state.map(todos => {
+        return {
+          //clono el estado
+          ...todos,
+          //creo otro array de mensajes
+          mensajes: todos.mensajes.map(mensaje => {
+            //busco el comentario indicado para actualizar
+            if (mensaje.comentarioID === action.payload.comentarioID) {
+              return {
+                // clono el mensaje
+                ...mensaje,
+                //cambio el comentario por el comentario nuevo
+                comentario: action.payload.comentario
+              };
+            } else {
+              //si no son iguales, retorno el array por defecto
+              return { ...mensaje };
+            }
+          })
+        };
+      });
+
+    // temp = state.filter((list => list.id === parseInt(action.comment.id)))
+    // const msgs = [].concat(...temp).map(x=> ({
+    //   id: x.id,
+    //   comment : x.comment,
+    //   commentID : x.commentID
+    //   })) // trying to get the messages inside the state
+
+    // return msgs.map( msg => {
+    //   if(msg.commentID === action.payload.commentID){
+    //     return {...}
+    //   }
+    // }
+
+    //   )
 
     default:
       return state;

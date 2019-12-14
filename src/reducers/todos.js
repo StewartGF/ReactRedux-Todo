@@ -25,6 +25,7 @@ const todos = (state = [], action) => {
       );
     case "BORRAR_TODO":
       return state.filter(todo => todo.id !== action.payload);
+
     case "EDITAR_COMENTARIO":
       return state.map(todos => {
         return {
@@ -47,21 +48,6 @@ const todos = (state = [], action) => {
           })
         };
       });
-
-    // temp = state.filter((list => list.id === parseInt(action.comment.id)))
-    // const msgs = [].concat(...temp).map(x=> ({
-    //   id: x.id,
-    //   comment : x.comment,
-    //   commentID : x.commentID
-    //   })) // trying to get the messages inside the state
-
-    // return msgs.map( msg => {
-    //   if(msg.commentID === action.payload.commentID){
-    //     return {...}
-    //   }
-    // }
-
-    //   )
 
     default:
       return state;

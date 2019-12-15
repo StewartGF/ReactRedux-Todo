@@ -11,6 +11,9 @@ import uuid from "react-uuid";
 const App = () => {
   return (
     <div key={uuid()} className="centered-content">
+      <a href="#" class="float">
+        <i class="fa fa-plus my-float"></i>
+      </a>
       <div className="container-todos row">
         <div className="sideMenu col-lg-12 col-sm-12">
           <SimpleBar style={{ maxHeight: "95%" }} autoHide={false}>

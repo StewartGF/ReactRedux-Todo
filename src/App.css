@@ -151,3 +151,20 @@ textarea {
     font-size: 12px !important;
   }
 }
+
+.float {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  left: 0;
+  background-color: rgb(252, 148, 11);
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  margin: 2.5px;
+}
+
+.my-float {
+  margin-top: 11px;
+}

@@ -62,7 +62,7 @@ function Comentarios(todos) {
                 style={{ display: isParrafoDisplayed ? "block" : "none" }}
                 className="texto"
               >
-                {comentario.comentario}
+                🔸 {comentario.comentario}
               </p>
               <textarea
                 id={comentario.id}

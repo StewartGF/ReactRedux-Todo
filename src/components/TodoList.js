@@ -87,20 +87,28 @@ function TodoList({ todos, toggleTodo, dispatch }) {
               aria-labelledby="headingOne"
               data-parent="#accordionExample"
             >
-              <div className="card-body">
-                <Comentarios></Comentarios>
-                <input
-                  id={todo.id}
-                  type="text"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                <button
-                  className="btnFontSize"
-                  onClick={() => handleComentario(todo.id)}
-                >
-                  Agregar comentario
-                </button>
+              <div className="card-body row mx-auto">
+                <div className="col-lg-12">
+                  <Comentarios></Comentarios>
+                </div>
+                <div className="form-group col-lg-6 col-sm-12 mx-auto">
+                  <input
+                    id={todo.id}
+                    type="text"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className="form-control"
+                  />
+                </div>
+                <div className="col-lg-6 col-sm-12">
+                  <button
+                    className="btnFontSize btn btn-success rounded-pill mt-1"
+                    onClick={() => handleComentario(todo.id)}
+                    style={{ float: "left" }}
+                  >
+                    Agregar comentario
+                  </button>
+                </div>
               </div>
             </div>
           </div>

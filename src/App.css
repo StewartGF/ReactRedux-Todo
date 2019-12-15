@@ -134,3 +134,20 @@ textarea {
   float: left;
   margin: 3px;
 }
+
+.form-group input[type="text"] {
+  width: 70%;
+  float: right;
+}
+
+@media only screen and (max-width: 995px) {
+  .form-group input[type="text"] {
+    width: 80%;
+    float: left;
+  }
+}
+@media only screen and (max-width: 995px) {
+  * {
+    font-size: 12px !important;
+  }
+}

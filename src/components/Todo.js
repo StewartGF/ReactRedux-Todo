@@ -11,7 +11,7 @@ const Todo = ({ onClick, completed, text }) => (
       textAlign: "center"
     }}
   >
-    {text}
+    🔹 {text}
   </div>
 );
 

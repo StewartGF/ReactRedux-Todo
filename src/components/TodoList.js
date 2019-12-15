@@ -6,8 +6,6 @@ import { connect } from "react-redux";
 import uuid from "react-uuid";
 import Comentarios from "./Comentarios";
 
-// acá agregar el dispatch para agregar un comentario dentro del map tomar el todo.id y el texto del comentario
-
 function TodoList({ todos, toggleTodo, dispatch }) {
   const [Comentario, setComentario] = useState({
     id: 0,
@@ -128,37 +126,3 @@ TodoList.propTypes = {
   toggleTodo: PropTypes.func.isRequired
 };
 export default connect()(TodoList);
-
-// {todos.map(todo => (
-//   <div key={todo.id} className="izqContent">
-//     <Todo {...todo} onClick={() => toggleTodo(todo.id)} />
-//     <input
-//       id={todo.id}
-//       type="text"
-//       onChange={handleChange}
-//       onBlur={handleBlur}
-//     />
-//     <button
-//       className="btnFontSize"
-//       onClick={() => handleComentario(todo.id)}
-//     >
-//       Agregar comentario
-//     </button>
-//     <button
-//       id={todo.id}
-//       className="btn btnFontSize btn-info "
-//       onClick={verComentarios}
-//       style={{ margin: "3px" }}
-//     >
-//       <i class="far fa-comment-alt"></i> Ver Comentarios
-//     </button>
-//     <button
-//       id={todo.id}
-//       className="btn btnFontSize btn-danger"
-//       style={{ margin: "3px" }}
-//       onClick={() => dispatch(borrarToDo(todo.id))}
-//     >
-//       <i class="fas fa-trash-alt"></i>
-//     </button>
-//   </div>
-// ))}

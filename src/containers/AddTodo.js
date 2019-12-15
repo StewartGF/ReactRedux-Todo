@@ -17,10 +17,6 @@ const AddTodo = ({ dispatch }) => {
           input.value = "";
         }}
       >
-        {/* <input ref={node => input = node} />
-        <button type="submit">
-          Add Todo
-        </button> */}
         <div className="input-group mb-3">
           <input
             type="text"

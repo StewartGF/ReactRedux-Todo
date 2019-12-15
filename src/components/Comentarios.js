@@ -62,7 +62,10 @@ function Comentarios(todos) {
                 style={{ display: isParrafoDisplayed ? "block" : "none" }}
                 className="texto"
               >
-                🔸 {comentario.comentario}
+                <span role="img" aria-label="orange-diamond">
+                  🔸
+                </span>{" "}
+                {comentario.comentario}
               </p>
               <textarea
                 id={comentario.id}

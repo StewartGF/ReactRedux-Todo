@@ -57,7 +57,7 @@ footer {
   color: white;
   position: fixed;
   bottom: 0px;
-  text-align: center; /* This line is not needed but centers your text */
+  text-align: center;
   font-weight: 600;
 }
 @media only screen and (max-width: 650px) {

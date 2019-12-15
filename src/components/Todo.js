@@ -11,7 +11,10 @@ const Todo = ({ onClick, completed, text }) => (
       textAlign: "center"
     }}
   >
-    🔹 {text}
+    <span role="img" aria-label="blue-diamond">
+      🔹
+    </span>{" "}
+    {text}
   </div>
 );
 

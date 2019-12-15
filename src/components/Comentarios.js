@@ -72,12 +72,13 @@ function Comentarios(todos) {
                 name={comentario.idComentario}
                 className="form-control tArea"
                 type="text"
-                placeholder={comentario.comentario}
                 onChange={handleChange}
                 style={{
                   display: isAreaDisplayed ? "block" : "none"
                 }}
-              />
+              >
+                {comentario.comentario}
+              </textarea>
             </div>
             <div className="botonesCollapse ">
               <button

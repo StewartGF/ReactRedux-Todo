@@ -84,10 +84,6 @@ footer {
   font-weight: 600;
 }
 
-.tArea::placeholder {
-  opacity: 45%;
-}
-
 .noMargen {
   margin: 0 !important;
 }

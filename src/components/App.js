@@ -11,20 +11,17 @@ import uuid from "react-uuid";
 const App = () => {
   return (
     <div key={uuid()} className="centered-content">
-      <div className="container-todos">
-        <div className="sideMenu">
-          <SimpleBar
-            data-simplebar-auto-hide="false"
-            style={{ maxHeight: "95%" }}
-          >
+      <div className="container-todos row">
+        <div className="sideMenu col-lg-12 col-sm-12">
+          <SimpleBar style={{ maxHeight: "95%" }} autoHide={false}>
             <AddTodo />
             <VisibleTodoList />
             <Footer />
           </SimpleBar>
         </div>
-        <div className="rightMenu">
+        {/* <div className="rightMenu col-lg-6 col-sm-12">
           <Comentarios></Comentarios>
-        </div>
+        </div> */}
       </div>
     </div>
   );

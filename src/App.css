@@ -1,62 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 html,
 body {
   font-family: "Roboto", sans-serif !important;
-  background: #1a2980;
-  background: -webkit-linear-gradient(to right, #26d0ce, #1a2980);
-  background: linear-gradient(to right, #26d0ce, #1a2980);
-  overflow: hidden;
+  background: #141e30;
+  background: -webkit-linear-gradient(to bottom, #243b55, #141e30);
+  background: linear-gradient(to bottom, #243b55, #141e30);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+}
+#root {
+  height: 100%;
 }
 
 .centered-content {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
-
+.simplebar-vertical .simplebar-scrollbar {
+  margin: 20px;
+}
 .container-todos {
   width: 80%;
-  height: 70%;
-  margin: 30px;
-  padding: 55px;
+  height: 90% !important;
+  padding: 20px;
   background: white;
-  border-radius: 25px;
+  border-radius: 20px;
   position: relative;
   white-space: hidden;
   display: flex;
-  overflow: hidden;
-}
-.sideMenu {
-  height: 100%;
-  width: 20%;
-  border: solid 1px black;
-  flex-direction: column;
+  overflow: hidden !important;
+  box-sizing: border-box;
+  justify-content: center;
+  text-align: center;
   overflow-y: auto; /* para que no se sobreponga al div independiente de la cantidad de TO DO */
-  flex: 1;
-  box-sizing: border-box;
-  padding: 40px;
-  overflow: hidden;
 }
-.rightMenu {
-  box-sizing: border-box;
-  padding: 40px;
-  height: 100%;
-  width: 80%;
-  border: solid 1px black;
-  display: flex;
-  position: relative;
+
+.sideMenu {
   flex-direction: column;
-  flex: 2; /* para que tome el doble del espacio que el sidebar*/
-}
-@media (min-width: 700px) {
-  .sideMenu {
-    flex-direction: row;
-  }
-  .rightMenu {
-    flex-direction: row;
-    flex: 1;
-  }
+  box-sizing: border-box;
+  overflow: hidden;
+  max-height: 99%;
 }
 
 /* FOOTER*/
@@ -73,4 +64,73 @@ footer {
   .footer {
     display: none;
   }
+  .textoAgregar {
+    display: none;
+  }
+}
+@media only screen and (max-width: 850px) {
+  .textoSpanOcultar {
+    display: none;
+  }
+}
+@media only screen and (min-width: 651px) {
+  .iconoAgregar {
+    display: none;
+  }
+}
+
+.btnFontSize {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tArea {
+  font-weight: 600 !important;
+}
+
+.noMargen {
+  margin: 0 !important;
+}
+.botonesCollapse {
+  width: 25%;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+.btnCollapseComentarios {
+  float: left;
+  margin: 3px;
+}
+.btnCollapseBorrar {
+  float: right;
+  margin: 3px;
+}
+.descripcion {
+  width: 100%;
+  display: flex;
+  padding: 10px !important;
+}
+
+.cardIzquierda {
+  width: 50%;
+  vertical-align: middle;
+}
+.cardDerecha {
+  width: 50%;
+}
+
+textarea {
+  max-width: 90%;
+  min-width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btnCollapseEditar,
+.btnCollapseActualizar {
+  float: right;
+  margin: 3px;
+}
+.btnCollapseCancelar {
+  float: left;
+  margin: 3px;
 }

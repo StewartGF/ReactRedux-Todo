@@ -4,6 +4,7 @@ import Todo from "./Todo";
 import { addComentario, todoSeleccionado, borrarToDo } from "../actions";
 import { connect } from "react-redux";
 import uuid from "react-uuid";
+import Comentarios from "./Comentarios";
 
 // acá agregar el dispatch para agregar un comentario dentro del map tomar el todo.id y el texto del comentario
 
@@ -42,30 +43,70 @@ function TodoList({ todos, toggleTodo, dispatch }) {
   };
   return (
     <>
-      {todos.map(todo => (
-        <div key={todo.id} className="izqContent">
-          <ul>
-            <Todo {...todo} onClick={() => toggleTodo(todo.id)} />
-          </ul>
-          <input
-            id={todo.id}
-            type="text"
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          <button onClick={() => handleComentario(todo.id)}>
-            Agregar comentario
-          </button>
-          <button id={todo.id} onClick={verComentarios}>
-            Ver comentarios
-          </button>
-          <button id={todo.id} onClick={() => dispatch(borrarToDo(todo.id))}>
-            Borrar
-          </button>
-        </div>
-      ))}
+      <div className="accordion" id="accordionExample">
+        {todos.map(todo => (
+          <div key={todo.id} className="card">
+            <div className="card-header" id="headingOne">
+              <div style={{ display: "flex" }}>
+                <Todo {...todo} onClick={() => toggleTodo(todo.id)} />
+
+                <div id="botonsito" className="botonesCollapse ">
+                  <button
+                    id={todo.id}
+                    className="btn btnFontSize btn-danger btnCollapseBorrar"
+                    onClick={() => dispatch(borrarToDo(todo.id))}
+                  >
+                    <i className="fas fa-trash-alt"></i>
+                  </button>
+                </div>
+                <div id="botonsito" className="botonesCollapse">
+                  <button
+                    id={todo.id}
+                    onClick={verComentarios}
+                    className="btn btnFontSize btn-info btnCollapseComentarios "
+                    data-toggle="collapse"
+                    data-target={`#collapse${todo.id}`}
+                    aria-expanded="false"
+                    aria-controls={`collapse${todo.id}`}
+                  >
+                    <i
+                      id={todo.id}
+                      className="far fa-comment-alt"
+                      style={{ marginRight: "3px" }}
+                    />
+                    <span id={todo.id} className="textoSpanOcultar">
+                      Ver Comentarios
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              id={`collapse${todo.id}`}
+              className="collapse"
+              aria-labelledby="headingOne"
+              data-parent="#accordionExample"
+            >
+              <div className="card-body">
+                <Comentarios></Comentarios>
+                <input
+                  id={todo.id}
+                  type="text"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                <button
+                  className="btnFontSize"
+                  onClick={() => handleComentario(todo.id)}
+                >
+                  Agregar comentario
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </>
-    // <div className="derContent"></div>
   );
 }
 TodoList.propTypes = {
@@ -79,3 +120,37 @@ TodoList.propTypes = {
   toggleTodo: PropTypes.func.isRequired
 };
 export default connect()(TodoList);
+
+// {todos.map(todo => (
+//   <div key={todo.id} className="izqContent">
+//     <Todo {...todo} onClick={() => toggleTodo(todo.id)} />
+//     <input
+//       id={todo.id}
+//       type="text"
+//       onChange={handleChange}
+//       onBlur={handleBlur}
+//     />
+//     <button
+//       className="btnFontSize"
+//       onClick={() => handleComentario(todo.id)}
+//     >
+//       Agregar comentario
+//     </button>
+//     <button
+//       id={todo.id}
+//       className="btn btnFontSize btn-info "
+//       onClick={verComentarios}
+//       style={{ margin: "3px" }}
+//     >
+//       <i class="far fa-comment-alt"></i> Ver Comentarios
+//     </button>
+//     <button
+//       id={todo.id}
+//       className="btn btnFontSize btn-danger"
+//       style={{ margin: "3px" }}
+//       onClick={() => dispatch(borrarToDo(todo.id))}
+//     >
+//       <i class="fas fa-trash-alt"></i>
+//     </button>
+//   </div>
+// ))}

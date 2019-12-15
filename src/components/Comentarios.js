@@ -11,6 +11,10 @@ function Comentarios(todos) {
     comentarioID: ""
   });
   const dispatch = useDispatch(); // Hook para usar dispatch
+  //cambiar el display
+  const [isParrafoDisplayed, setIsParrafoDisplayed] = useState(true);
+  const [isAreaDisplayed, setIsAreaDisplayed] = useState(false);
+  //cambiar el display
 
   let comentarios;
   let con;
@@ -26,6 +30,7 @@ function Comentarios(todos) {
   }
 
   //HANDLES
+
   const handleChange = e => {
     setUpdateComentario({
       id: e.target.id,
@@ -33,34 +38,87 @@ function Comentarios(todos) {
       comentarioID: e.target.getAttribute("name")
     });
   };
+  const handleBotonToggle = () => {
+    setIsParrafoDisplayed(!isParrafoDisplayed);
+    setIsAreaDisplayed(!isAreaDisplayed);
+  };
 
+  const handleBotonActualizar = () => {
+    dispatch(editarComentario(updateComentario));
+    setIsAreaDisplayed(!isAreaDisplayed);
+    setIsParrafoDisplayed(!isParrafoDisplayed);
+  };
   return (
     <div className="container-comentarios">
-      <h1>Comentarios</h1>
       {con.map(comentario => (
         <div
           key={comentario.idComentario}
-          className="comentario-item"
+          className="card comentario-item"
           style={{ marginBottom: "10px" }}
         >
-          <div className="descripcion">
-            <p className="id"> {comentario.idComentario}</p>
-            <p className="texto">{comentario.comentario} </p>
-          </div>
-          <div>
-            <div className="comentarioInputUpdate">
-              <input
+          <div className="card-body descripcion ">
+            <div className="cardIzquierda ">
+              <p
+                style={{ display: isParrafoDisplayed ? "block" : "none" }}
+                className="texto"
+              >
+                {comentario.comentario}
+              </p>
+              <textarea
                 id={comentario.id}
                 name={comentario.idComentario}
+                className="form-control tArea"
                 type="text"
+                placeholder={comentario.comentario}
                 onChange={handleChange}
+                style={{
+                  display: isAreaDisplayed ? "block" : "none"
+                }}
               />
             </div>
-            <button
-              onClick={() => dispatch(editarComentario(updateComentario))}
-            >
-              Actualizar Comentario
-            </button>
+            <div className="botonesCollapse ">
+              <button
+                className="btn btn-warning btnFontSize btnCollapseEditar"
+                style={{
+                  color: "white",
+                  display: isParrafoDisplayed ? "block" : "none"
+                }}
+                onClick={handleBotonToggle}
+              >
+                <i id={comentario.id} className="fas fa-edit"></i>
+                <span id={comentario.id} className="textoSpanOcultar">
+                  Editar Comentario
+                </span>
+              </button>
+              <button
+                className="btn btn-success btnFontSize btnCollapseActualizar"
+                style={{
+                  color: "white",
+                  display: isAreaDisplayed ? "block" : "none"
+                }}
+                onClick={handleBotonActualizar}
+              >
+                <i id={comentario.id} className="fas fa-edit"></i>
+                <span id={comentario.id} className="textoSpanOcultar">
+                  Actualizar
+                </span>
+              </button>
+            </div>
+            <div className="botonesCollapse ">
+              <button
+                className="btn btn-danger btnFontSize btnCollapseCancelar"
+                style={{
+                  color: "white",
+                  display: isAreaDisplayed ? "block" : "none"
+                }}
+                onClick={handleBotonToggle}
+              >
+                <i id={comentario.id} className="fas fa-times-circle"></i>
+                <span id={comentario.id} className="textoSpanOcultar">
+                  Cancelar
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       ))}
